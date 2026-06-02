@@ -7,7 +7,7 @@ public class Main {
         Baraja baraja = new Baraja();
 
         baraja.cargarCartas();
-
+        int opcion=0;
         do {
             System.out.println("Bienvenido, ingrese una opcion");
             try {
@@ -19,7 +19,7 @@ public class Main {
                        "6) Mostrar cartas en la baraja\n" +
                        "7) Salir\n" +
                        "A continuacion ingrese una de las opciones disponibles: ");
-                int opcion = leer.nextInt();
+                opcion = leer.nextInt();
                 
                 if (opcion == 1) {
                     baraja.Barajar();
@@ -29,6 +29,7 @@ public class Main {
                 } else if (opcion == 3) {
                     System.out.println("La cantidad de cartas disponibles en la baraja es de: " + baraja.cantidadCartasDisponibles());
                 } else if (opcion == 4) {
+                    System.out.println("Ingrese la cantidad de cartas a repartir");
                     // Ingresar la cantidad de cartas que se van a repartir y validar que hayan suficientes en el mazo junto a que sean numeros validos
                     baraja.repartir(opcion);
                 } else if (opcion == 5){
@@ -43,6 +44,7 @@ public class Main {
                 }
             } catch (Exception e) {
                 System.out.println("Error, valor no valido ingresado. Ingrese por consola el numero de la operacion que desea realizar");
+                leer.nextLine();
             }
         } while (true);
     }
