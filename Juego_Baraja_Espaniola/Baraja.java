@@ -15,7 +15,7 @@ public class Baraja {
         String [] palo = {"Basto", "Copa", "Oro", "Espada"};
         
         for (String p : palo) {
-            for (int i = 1; i < 10; i++) {
+            for (int i = 1; i <= 10; i++) {
                 if (i == 8 || i == 9 || i == 10) {
                     disponibles.add(new Carta(p, i + 2));
                 }else{
@@ -39,7 +39,10 @@ public class Baraja {
     }
 
     public void repartir(int cantidad){
-
+        for(int i = 1; i <= cantidad; i++){
+            repartidas.add(disponibles.get(0));
+            disponibles.remove(0);
+        }
     }
 
     public void cartasRepartidas(){
@@ -48,7 +51,7 @@ public class Baraja {
         } else {
             System.out.println("En total se han repartido " + repartidas.size() + " cartas las cuales son: ");
             for (Carta c : repartidas) {
-                c.toString();
+                System.out.println(c.toString());
             }
         }
     }
@@ -59,7 +62,7 @@ public class Baraja {
         } else {
             System.out.println("En total quedan " + cantidadCartasDisponibles() + " cartas en la baraja las cuales son: ");
             for (Carta c : disponibles) {
-                c.toString();
+                System.out.println(c.toString());
             }
         }
     }

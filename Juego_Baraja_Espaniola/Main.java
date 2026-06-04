@@ -8,6 +8,7 @@ public class Main {
 
         baraja.cargarCartas();
         int opcion=0;
+        int cantidad=0;
         do {
             System.out.println("Bienvenido, ingrese una opcion");
             try {
@@ -24,14 +25,14 @@ public class Main {
                 if (opcion == 1) {
                     baraja.Barajar();
                 } else if (opcion == 2) {
-                    // Hacer esta funcion
                     baraja.siguienteCarta();
                 } else if (opcion == 3) {
                     System.out.println("La cantidad de cartas disponibles en la baraja es de: " + baraja.cantidadCartasDisponibles());
                 } else if (opcion == 4) {
                     System.out.println("Ingrese la cantidad de cartas a repartir");
-                    // Ingresar la cantidad de cartas que se van a repartir y validar que hayan suficientes en el mazo junto a que sean numeros validos
-                    baraja.repartir(opcion);
+                    cantidad=leer.nextInt();
+                    // Hacer el try-catch de esta parte del codigo
+                    baraja.repartir(cantidad);
                 } else if (opcion == 5){
                     baraja.cartasRepartidas();
                 } else if (opcion == 6){
