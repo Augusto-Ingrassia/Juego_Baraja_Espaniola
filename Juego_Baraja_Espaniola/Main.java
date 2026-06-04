@@ -14,7 +14,7 @@ public class Main {
             try {
                 System.out.println("1) Barajar Mazo\n" +
                        "2) Obtener siguiente carta\n" +
-                       "3) Consultar cartas disponibles\n" +
+                       "3) Consultar cantidad de cartas disponibles\n" +
                        "4) Repartir cartas\n" +
                        "5) Mostrar cartas repartidas\n" +
                        "6) Mostrar cartas en la baraja\n" +

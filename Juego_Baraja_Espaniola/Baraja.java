@@ -39,9 +39,14 @@ public class Baraja {
     }
 
     public void repartir(int cantidad){
-        for(int i = 1; i <= cantidad; i++){
+        if (cantidad>disponibles.size()){
+            System.out.println("Error el numero de cartas a repartir es mas grande que el numero de cartas disponible");
+        }else{
+            for(int i = 1; i <= cantidad; i++){
             repartidas.add(disponibles.get(0));
             disponibles.remove(0);
+        }
+        System.out.println(cantidad+" Cartas repartidas");
         }
     }
 
