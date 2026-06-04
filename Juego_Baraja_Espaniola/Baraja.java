@@ -31,7 +31,7 @@ public class Baraja {
     }
 
     public void siguienteCarta(){
-
+        System.out.println("La siguiente carta es: "+disponibles.get(0));
     }
 
     public int cantidadCartasDisponibles(){
