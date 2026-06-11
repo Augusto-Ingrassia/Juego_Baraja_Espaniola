@@ -1,51 +1,66 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+
+    public static int validarNumero(){
+        Scanner leer = new Scanner(System.in);
+        int jugadores = 0;
+        do {
+            try {
+                jugadores = Integer.parseInt(leer.nextLine());
+                if (jugadores < 2 || jugadores > 5) {
+                    System.out.println("Error, la cantidad de jugadores no puede ser menor a 2 o mayor a 5. Vuelva a ingresar la cantidad");
+                    System.out.println();
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Error, ingrese numeros no cualquier otro valor");
+                System.out.println();
+            }
+        } while (jugadores < 2 || jugadores > 5);
+        return jugadores;
+    }
     public static void main(String[] args) {
         Scanner leer = new Scanner(System.in);
 
-        Baraja baraja = new Baraja();
 
-        baraja.cargarCartas();
-        int opcion=0;
-        int cantidad=0;
         do {
+            System.out.println("--- SACAR REYES ---");
             System.out.println("Bienvenido, ingrese una opcion");
             try {
-                System.out.println("1) Barajar Mazo\n" +
-                       "2) Obtener siguiente carta\n" +
-                       "3) Consultar cantidad de cartas disponibles\n" +
-                       "4) Repartir cartas\n" +
-                       "5) Mostrar cartas repartidas\n" +
-                       "6) Mostrar cartas en la baraja\n" +
-                       "7) Salir\n" +
+                System.out.println("1) Reglas Juego\n" +
+                       "2) Empezar Juego\n" +
+                       "3) Salir\n" +
                        "A continuacion ingrese una de las opciones disponibles: ");
-                opcion = leer.nextInt();
+                int opcion = Integer.parseInt(leer.nextLine());
                 
                 if (opcion == 1) {
-                    baraja.Barajar();
-                } else if (opcion == 2) {
-                    baraja.siguienteCarta();
-                } else if (opcion == 3) {
-                    System.out.println("La cantidad de cartas disponibles en la baraja es de: " + baraja.cantidadCartasDisponibles());
-                } else if (opcion == 4) {
-                    System.out.println("Ingrese la cantidad de cartas a repartir");
-                    cantidad=leer.nextInt();
-                    // Hacer el try-catch de esta parte del codigo
-                    baraja.repartir(cantidad);
-                } else if (opcion == 5){
-                    baraja.cartasRepartidas();
-                } else if (opcion == 6){
-                    baraja.cartasDisponibles();
-                } else if (opcion == 7){
+                    Juego.reglasJuego();
+                }else if (opcion == 2) {
+                    System.out.println("Primero ingrese la cantidad de jugadores (entre 2 y 5)");
+                    int jugadores = validarNumero();
+
+                    ArrayList<Jugador> listaJugadores = new ArrayList<>();
+                    for (int i = 1; i <= jugadores; i++) {
+                        System.out.println("Ingrese el nombre del jugador " + i);
+                        String nombre = leer.nextLine();
+
+                        Jugador jugador = new Jugador(nombre);
+                        listaJugadores.add(jugador);
+                    }
+                    
+                    Juego nuevoJuego = new Juego(listaJugadores);
+                    nuevoJuego.empezarJuego();
+                } else if (opcion == 3){
                     System.out.println("Hasta luego");
                     break;
                 } else{
                     System.out.println("Error, el numero ingresado no pertenece a ninguna opcion disponible actualmente. Vuelva a ingresar un numero");
+                    System.out.println();
                 }
             } catch (Exception e) {
                 System.out.println("Error, valor no valido ingresado. Ingrese por consola el numero de la operacion que desea realizar");
-                leer.nextLine();
+                System.out.println();
             }
         } while (true);
     }

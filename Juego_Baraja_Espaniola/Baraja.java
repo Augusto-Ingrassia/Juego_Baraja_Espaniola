@@ -27,27 +27,20 @@ public class Baraja {
 
     public void Barajar(){
         Collections.shuffle(disponibles);
-        System.out.println("La baraja fue mezclada");
     }
 
-    public void siguienteCarta(){
-        System.out.println("La siguiente carta es: "+disponibles.get(0));
+    public Carta siguienteCarta(){
+        Carta sacada = disponibles.remove(0);
+        repartidas.add(sacada);
+        return sacada;
     }
 
     public int cantidadCartasDisponibles(){
         return disponibles.size();
     }
 
-    public void repartir(int cantidad){
-        if (cantidad>disponibles.size()){
-            System.out.println("Error el numero de cartas a repartir es mas grande que el numero de cartas disponible");
-        }else{
-            for(int i = 1; i <= cantidad; i++){
-            repartidas.add(disponibles.get(0));
-            disponibles.remove(0);
-        }
-        System.out.println(cantidad+" Cartas repartidas");
-        }
+    public int cantidadCartasRepartidas(){
+        return repartidas.size();
     }
 
     public void cartasRepartidas(){
@@ -70,5 +63,11 @@ public class Baraja {
                 System.out.println(c.toString());
             }
         }
+    }
+
+    public void nuevaPartida(){
+        disponibles.clear();
+        repartidas.clear();
+        cargarCartas();
     }
 }
