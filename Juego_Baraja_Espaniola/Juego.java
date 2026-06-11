@@ -93,6 +93,7 @@ public class Juego {
                             System.out.println("El jugador " + j.getNombre() + " queda eliminado");
                             j.setEnJuego(false);
                             System.out.println();
+                            
                         }
                     }
                 }
